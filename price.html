@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Price Check</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="jquery-3.6.1.js"></script>
+	<script src="javascript.js"></script>
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="logo">
+				<img src="img/logo-hotel.png" alt="Gambar tidak termuat">
+			</div>
+			<div class="menu">
+				<ul>
+					<li><a href="index.html" id="home">Home</a></li>
+					<li><a href="price.html" id="price"><u>Price Check</u></a></li>
+					<li><a href="#" class="primary-btn" onclick="logOut()">Log Out</a></li> 
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<section>
+		<div class="overlay"></div>
+		<div id="slider">
+			<img id="sliderImage1" src="img/full-slider-1.jpg">
+			<img id="sliderImage2" src="img/full-slider-2.jpg">
+			<img id="sliderImage3" src="img/full-slider-3.jpg">
+			<img id="sliderImage4" src="img/about1.jpg">
+			<img id="sliderImage5" src="img/about2.jpg">
+			<img id="sliderImage6" src="img/about3.jpg">
+		</div>
+		<div class="check">
+			<h1>Input to Check Price</h1>
+			<form name="checkForm" onsubmit="return" method="post">
+				<table>
+					<tr>
+						<td class="o"><b>Floor</b></td>
+						<td><input class="i" type="number" name="floor" id="floor"></td>
+					</tr>
+					<tr>
+						<td class="o"><b>Type</b></td>
+						<td>
+						<select class="i" id="type" name="type">
+							<option value="5000">Standard</option>
+							<option value="6000">Superior</option>	
+							<option value="7000">Deluxe</option>		
+						</select>
+						</td> 
+					</tr>
+					<tr>
+						<td class="o"><b>Day(s)</b></td>
+						<td><input type="number" name="day" class="i" id="day"></td>
+					</tr>
+					<tr>
+						<td class="o"><b>Discount</b></td>
+						<td>
+						<select class="i" id="discount" name="discount">
+							<option value="0">None</option>
+							<option value="1">Member</option>	
+							<option value="2">Birthday Promo</option>
+						</select>
+						</td>
+					</tr>
+				</table>  
+				<input type="submit" id="check" class="button" value="Check">
+			</form>
+			<div class="output">
+				<label id="prc">Total Price is </label><br>
+				<label id="disc">Total Discount is </label><br>
+				<label id="pay">The Payment is </label>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="copyright">&copy; 2022 <br>Web Design and Programming</div>
+	</footer>
+	<script>
+		$(document).ready(function(){
+			$('#check').click((e)=>{
+
+				e.preventDefault();
+				let floor = $("#floor").val();
+				let type = $("#type").val();
+				let day = $("#day").val();
+				let discount = $("#discount").val();
+
+				if(floor == "" || day == ""){
+					alert ("Fill all the data!")
+				} else {
+					var price = type * day;
+					
+					if(floor > 5){	
+						price += 1000;
+					} 
+				
+
+					if (discount == 1) {
+						discount = (price*0.1);
+					} else if (discount == 2){
+						discount = 500;
+					} 
+					var prc = $("#prc");
+					prc.text(`${prc.text()}${price}`);
+
+					var dis = $("#disc");
+					if (discount != 0) {
+						price -= discount;
+						dis.text(`${dis.text()}${discount}`);
+					} else {
+						dis.css("display", "none");
+						prc.css("display", "none");
+					}
+
+					var pay = $("#pay");
+					pay.text(`${pay.text()}${price}`);
+					$(".output").css({"display": "block"});
+				}
+			})
+		})
+	</script>
+</body>
+</html>

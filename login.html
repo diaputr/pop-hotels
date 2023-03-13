@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Log In</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="jquery-3.6.1.js"></script>
+	<script src="javascript.js"></script>
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="logo">
+				<img src="img/logo-hotel.png" alt="Gambar tidak termuat">
+			</div>
+		</nav>
+	</header>
+	<section>
+		<div class="overlay"></div>
+		<div id="slider">
+			<img id="sliderImage1" src="img/full-slider-1.jpg">
+			<img id="sliderImage2" src="img/full-slider-2.jpg">
+			<img id="sliderImage3" src="img/full-slider-3.jpg">
+			<img id="sliderImage4" src="img/about1.jpg">
+			<img id="sliderImage5" src="img/about2.jpg">
+			<img id="sliderImage6" src="img/about3.jpg">
+		</div>
+		<div class="log">
+			<h1>PLEASE LOGIN TO ENTER</h1>
+			<form name="myForm" action="index.html" onsubmit="return validateForm()" method="post">
+				<b>Username</b> <input class="i" type="text" name="username"><br>
+				<b>Password</b> <input class="i" type="password" name="password"><br>
+				<input type="submit" class="button" value="Log In">
+			</form>
+		</div>
+	</section>
+</body>
+</html>
